@@ -25,24 +25,25 @@ public class Validators {
         Pattern lowerCasePatten = Pattern.compile("[a-z ]");
         Pattern digitCasePatten = Pattern.compile("[0-9 ]");
 
-        if (!passwordHere.equals(confirmHere)) {
-            errorList.add("password and confirm password does not match");
-        }
-        if (passwordHere.length() < 6) {
+
+        if (passwordHere.length() < 6)
             errorList.add("Password length must have at least 6 character !!");
-        }
-        if (!specialCharPatten.matcher(passwordHere).find()) {
+
+        if (!specialCharPatten.matcher(passwordHere).find())
             errorList.add("Password must have at least one special character !!");
-        }
-        if (!UpperCasePatten.matcher(passwordHere).find()) {
+
+        if (!UpperCasePatten.matcher(passwordHere).find())
             errorList.add("Password must have at least one uppercase character !!");
-        }
-        if (!lowerCasePatten.matcher(passwordHere).find()) {
+
+        if (!lowerCasePatten.matcher(passwordHere).find())
             errorList.add("Password must have at least one lowercase character !!");
-        }
-        if (!digitCasePatten.matcher(passwordHere).find()) {
+
+        if (!digitCasePatten.matcher(passwordHere).find())
             errorList.add("Password must have at least one digit character !!");
-        }
+
+        if (!passwordHere.equals(confirmHere))
+            errorList.add("password and confirm password does not match");
+
 
         return errorList;
 
