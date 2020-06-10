@@ -1,5 +1,6 @@
 package org.itkarasa.loginapp.database.entity
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -8,10 +9,13 @@ import androidx.room.PrimaryKey
  */
 @Entity(tableName = "user_table")
 data class User(
+    @ColumnInfo(name = "username")
     var username: String,
+    @ColumnInfo(name = "password")
     var password: String
 ) {
     @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "user_id")
     var id: Int = 0
 
 
