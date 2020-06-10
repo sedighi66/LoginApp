@@ -16,7 +16,7 @@ import org.itkarasa.loginapp.database.entity.User
 /**
  * Created by mohsen on 03,May,2020
  */
-@Database(entities = [User::class], version = 1)
+@Database(entities = [User::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDao
