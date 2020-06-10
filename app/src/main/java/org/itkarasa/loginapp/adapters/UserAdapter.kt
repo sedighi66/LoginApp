@@ -1,6 +1,7 @@
 package org.itkarasa.loginapp.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import kotlinx.coroutines.launch
 import org.itkarasa.loginapp.database.entity.User
 import org.itkarasa.loginapp.databinding.UserItemBinding
 import org.itkarasa.loginapp.repository.UserRepository
+import org.itkarasa.loginapp.ui.ProfileWatchActivity
 import org.itkarasa.loginapp.view_models.AdminViewModel
 
 /**
@@ -50,11 +52,11 @@ class UserAdapter(
         }
 
         override fun onClickItem(view: View) {
-            //TODO
-            //go profile watch page
-//            val intent = Intent(context, WatchProfileActivity::class.java)
-//            intent.putExtra(WATCH_PROFILE_KEY, binding.user)
-//            context.startActivity(intent)
+
+            val intent = Intent(context, ProfileWatchActivity::class.java)
+            intent.putExtra(WATCH_PROFILE_KEY, binding.user)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
         }
 
         override fun remove(view: View) {

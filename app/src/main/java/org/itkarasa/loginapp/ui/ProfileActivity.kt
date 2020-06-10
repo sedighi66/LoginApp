@@ -25,7 +25,7 @@ class ProfileActivity : AppCompatActivity() {
 
         title = getString(R.string.profile)
 
-        val user = intent.getSerializableExtra(LoginViewModel.USER) as User
+        val user = intent.getSerializableExtra(LoginViewModel.USER_KEY) as User
         binding.viewModel =
             DaggerProfileComponent.builder().appModule(AppModule(this))
                 .userModule(UserModule(user)).build().profileViewModel()

@@ -6,3 +6,4 @@ package org.itkarasa.loginapp
 
  const val ADMIN_USERNAME = "admin@admin.com"
  const val ADMIN_PASSWORD = "Admin1234"
+ const val ADMIN_FULL_NAME = "Mohsen Sedighi"

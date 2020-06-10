@@ -2,16 +2,12 @@ package org.itkarasa.loginapp.view_models
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
-import android.widget.Toast
-import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.itkarasa.loginapp.repository.UserRepository
 import javax.inject.Inject
-import android.view.View
 import androidx.core.content.ContextCompat.startActivity
 import org.itkarasa.loginapp.R
 import org.itkarasa.loginapp.ui.AdminActivity
@@ -54,7 +50,7 @@ class LoginViewModel @Inject constructor(
                     }
                     else {
                         val intent = Intent(context, ProfileActivity::class.java)
-                        intent.putExtra(USER, user)
+                        intent.putExtra(USER_KEY, user)
                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                         startActivity(context, intent, null)
                     }
@@ -66,6 +62,6 @@ class LoginViewModel @Inject constructor(
 
     companion object{
         private const val TAG = "LoginViewModel"
-        const val USER = "user"
+        const val USER_KEY = "user"
     }
 }

@@ -8,6 +8,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.itkarasa.loginapp.ADMIN_FULL_NAME
 import org.itkarasa.loginapp.ADMIN_PASSWORD
 import org.itkarasa.loginapp.ADMIN_USERNAME
 import org.itkarasa.loginapp.database.dao.UserDao
@@ -61,7 +62,7 @@ abstract class AppDatabase : RoomDatabase() {
 
             CoroutineScope(Dispatchers.IO).launch {
                 val admin = User(
-                    ADMIN_USERNAME, ADMIN_PASSWORD
+                    ADMIN_USERNAME, ADMIN_PASSWORD, ADMIN_FULL_NAME
                 )
                 admin.isAdmin = true
                 userDao?.insert(admin)
