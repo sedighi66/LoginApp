@@ -1,4 +1,4 @@
-package org.itkarasa.loginapp.di
+package org.itkarasa.loginapp.di.Modules
 
 import android.app.Application
 import android.content.Context

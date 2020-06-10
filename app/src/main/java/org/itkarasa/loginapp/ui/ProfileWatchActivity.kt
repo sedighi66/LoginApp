@@ -2,16 +2,14 @@ package org.itkarasa.loginapp.ui
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import org.itkarasa.loginapp.R
 import org.itkarasa.loginapp.adapters.UserAdapter.UserViewHolder.Companion.WATCH_PROFILE_KEY
 import org.itkarasa.loginapp.database.entity.User
 import org.itkarasa.loginapp.databinding.ActivityProfileWatchBinding
-import org.itkarasa.loginapp.di.AppModule
-import org.itkarasa.loginapp.di.DaggerProfileWatchComponent
-import org.itkarasa.loginapp.di.UserModule
-import org.itkarasa.loginapp.view_models.LoginViewModel
+import org.itkarasa.loginapp.di.Modules.AppModule
+import org.itkarasa.loginapp.di.Modules.UserModule
+import org.itkarasa.loginapp.di.components.DaggerProfileWatchComponent
 
 class ProfileWatchActivity : AppCompatActivity() {
 
@@ -28,7 +26,11 @@ class ProfileWatchActivity : AppCompatActivity() {
 
         val user = intent.getSerializableExtra(WATCH_PROFILE_KEY) as User
         binding.viewModel =
-            DaggerProfileWatchComponent.builder().appModule(AppModule(this))
+            DaggerProfileWatchComponent.builder().appModule(
+                AppModule(
+                    this
+                )
+            )
                 .userModule(UserModule(user)).build().profileWatchViewModel()
 
     }

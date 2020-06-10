@@ -1,6 +1,7 @@
-package org.itkarasa.loginapp.di
+package org.itkarasa.loginapp.di.components
 
 import dagger.Component
+import org.itkarasa.loginapp.di.Modules.AppModule
 import org.itkarasa.loginapp.view_models.SignupViewModel
 
 /**

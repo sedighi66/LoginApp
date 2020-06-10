@@ -7,9 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import org.itkarasa.loginapp.R
 import org.itkarasa.loginapp.database.entity.User
 import org.itkarasa.loginapp.databinding.ActivityProfileBinding
-import org.itkarasa.loginapp.di.AppModule
-import org.itkarasa.loginapp.di.DaggerProfileComponent
-import org.itkarasa.loginapp.di.UserModule
+import org.itkarasa.loginapp.di.Modules.AppModule
+import org.itkarasa.loginapp.di.Modules.UserModule
+import org.itkarasa.loginapp.di.components.DaggerProfileComponent
 import org.itkarasa.loginapp.view_models.LoginViewModel
 
 class ProfileActivity : AppCompatActivity() {
@@ -27,7 +27,11 @@ class ProfileActivity : AppCompatActivity() {
 
         val user = intent.getSerializableExtra(LoginViewModel.USER_KEY) as User
         binding.viewModel =
-            DaggerProfileComponent.builder().appModule(AppModule(this))
+            DaggerProfileComponent.builder().appModule(
+                AppModule(
+                    this
+                )
+            )
                 .userModule(UserModule(user)).build().profileViewModel()
 
         rootView.findViewById<Button>(R.id.update).setOnClickListener {

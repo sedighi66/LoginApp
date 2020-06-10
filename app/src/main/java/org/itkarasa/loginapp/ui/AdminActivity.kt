@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_admin.*
 import org.itkarasa.loginapp.R
 import org.itkarasa.loginapp.adapters.UserAdapter
-import org.itkarasa.loginapp.di.AppModule
-import org.itkarasa.loginapp.di.DaggerAdminComponent
+import org.itkarasa.loginapp.di.Modules.AppModule
+import org.itkarasa.loginapp.di.components.DaggerAdminComponent
 import org.itkarasa.loginapp.view_models.AdminViewModel
 
 class AdminActivity : AppCompatActivity() {
@@ -21,7 +21,11 @@ class AdminActivity : AppCompatActivity() {
 
         title = getString(R.string.admin)
 
-        viewModel = DaggerAdminComponent.builder().appModule(AppModule(this)).build().adminViewModel()
+        viewModel = DaggerAdminComponent.builder().appModule(
+            AppModule(
+                this
+            )
+        ).build().adminViewModel()
 
         userList.layoutManager = LinearLayoutManager(applicationContext)
 

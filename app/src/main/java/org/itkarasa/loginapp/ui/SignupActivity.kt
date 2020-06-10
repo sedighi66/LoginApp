@@ -3,10 +3,9 @@ package org.itkarasa.loginapp.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_signup.*
-import org.itkarasa.loginapp.LoginApp
 import org.itkarasa.loginapp.R
-import org.itkarasa.loginapp.di.AppModule
-import org.itkarasa.loginapp.di.DaggerSignupComponent
+import org.itkarasa.loginapp.di.Modules.AppModule
+import org.itkarasa.loginapp.di.components.DaggerSignupComponent
 import org.itkarasa.loginapp.view_models.SignupViewModel
 
 class SignupActivity : AppCompatActivity() {
@@ -20,7 +19,11 @@ class SignupActivity : AppCompatActivity() {
         title = getString(R.string.signup_page_name)
 
         viewModel =
-            DaggerSignupComponent.builder().appModule(AppModule(this))
+            DaggerSignupComponent.builder().appModule(
+                AppModule(
+                    this
+                )
+            )
                 .build().signUpViewModel()
 
         signUp.setOnClickListener {
