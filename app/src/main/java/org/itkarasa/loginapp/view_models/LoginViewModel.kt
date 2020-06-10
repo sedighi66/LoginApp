@@ -21,15 +21,6 @@ class LoginViewModel @Inject constructor(
     private val context: Context
 ) : ViewModel() {
 
-//    var username: String? = null
-//    var password: String? = null
-
-    suspend fun isAdmin(user: User): Boolean {
-
-        val authUser = userRepository.getUser(user.username, user.password) ?: return false
-        return authUser.isAdmin
-    }
-
 
     fun login(username: String?, password: String?) {
 
@@ -46,10 +37,12 @@ class LoginViewModel @Inject constructor(
                     showMessage("You are not signed Up before. Please sign up first.")
                 else {
                     if(user.isAdmin){
-                        showMessage("Hello admin.")
+                        //TODO
+                        //go to admin users page
                     }
-                    else{
-                        showMessage("Ok, you can go to your profile page.")
+                    else {
+                        //TODO
+                     //   go to user profile page
                     }
                 }
 
