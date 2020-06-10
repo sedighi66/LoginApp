@@ -1,7 +1,6 @@
 package org.itkarasa.loginapp.adapters
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,18 +10,22 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.itkarasa.loginapp.database.entity.User
 import org.itkarasa.loginapp.databinding.UserItemBinding
+import org.itkarasa.loginapp.repository.UserRepository
+import org.itkarasa.loginapp.view_models.AdminViewModel
 
 /**
  * Created by mohsen on 05,May,2020
  */
-class UserAdapter(private val users: List<User>, private val context: Context) :
-    RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
+class UserAdapter(
+    private val users: List<User>, private val context: Context,
+    private val adminViewModel: AdminViewModel
+): RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
 
         val layoutInflater = LayoutInflater.from(parent.context)
         val userItemBinding = UserItemBinding.inflate(layoutInflater, parent, false)
-        return UserViewHolder(userItemBinding, context)
+        return UserViewHolder(userItemBinding, context, adminViewModel)
     }
 
     override fun getItemCount(): Int {
@@ -35,7 +38,8 @@ class UserAdapter(private val users: List<User>, private val context: Context) :
 
     open class UserViewHolder(
         private val binding: UserItemBinding,
-        private val context: Context
+        private val context: Context,
+        private val adminViewModel: AdminViewModel
     ) :
         RecyclerView.ViewHolder(binding.root), IItemEvent {
 
@@ -45,7 +49,7 @@ class UserAdapter(private val users: List<User>, private val context: Context) :
             binding.executePendingBindings()
         }
 
-        override fun onClickItem(view: View){
+        override fun onClickItem(view: View) {
             //TODO
             //go profile watch page
 //            val intent = Intent(context, WatchProfileActivity::class.java)
@@ -54,10 +58,7 @@ class UserAdapter(private val users: List<User>, private val context: Context) :
         }
 
         override fun remove(view: View) {
-            CoroutineScope(Dispatchers.IO).launch {
-                //TODO
-                //remove item
-            }
+            adminViewModel.removeUser(binding.user!!)
         }
 
 

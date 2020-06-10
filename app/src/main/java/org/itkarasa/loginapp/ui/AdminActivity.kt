@@ -26,7 +26,7 @@ class AdminActivity : AppCompatActivity() {
         userList.layoutManager = LinearLayoutManager(applicationContext)
 
         viewModel.getUsers().observe(this, Observer {
-            userList.adapter = UserAdapter(it, applicationContext)
+            userList.adapter = UserAdapter(it, applicationContext, viewModel)
         })
     }
 

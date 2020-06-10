@@ -25,6 +25,16 @@ class AdminViewModel @Inject constructor(
 
     fun getUsers(): LiveData<List<User>> = userRepository.getUsers()
 
+    fun removeUser(user: User){
+        if(user.isAdmin){
+            showMessage("Can not remove Admin.")
+            return
+        }
+        CoroutineScope(Dispatchers.IO).launch {
+            userRepository.deleteUser(user)
+        }
+    }
+
     companion object{
         private const val TAG = "LoginViewModel"
     }
