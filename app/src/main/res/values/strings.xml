@@ -4,6 +4,7 @@
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
+    <string name="prompt_confirm_password">Confirm Password</string>
     <string name="action_log_in">Login</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome !"</string>
@@ -15,4 +16,11 @@
     <string name="action_sign_up">Singup</string>
     <string name="sign_up_message_success">You have successfully signed Up. For login, click back to Login page.</string>
     <string name="sign_up_message_failed">Sign up is Failed.</string>
+    <string name="enter_values">Please enter username and password.</string>
+    <string name="valid_email">Please enter a valid email address.</string>
+    <string name="confirm_pass">Password confirm your password.</string>
+    <string name="full_name">Full Name:</string>
+    <string name="confirm_password">Confirm Password:</string>
+    <string name="signup">Signup</string>
+    <string name="prompt_full_name">Full Name</string>
 </resources>

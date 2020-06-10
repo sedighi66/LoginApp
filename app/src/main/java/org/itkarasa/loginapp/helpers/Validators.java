@@ -1,12 +1,13 @@
 package org.itkarasa.loginapp.helpers;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
 /**
  * Created by mohsen on 10,June,2020
  */
-class Validators {
+public class Validators {
 
     public static boolean isValidEmailAddress(String email) {
         String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
@@ -15,42 +16,35 @@ class Validators {
         return m.matches();
     }
 
-    public static boolean isValid(String passwordhere, String confirmhere, List<String> errorList) {
+    public static List<String> isPasswordValid(String passwordHere, String confirmHere) {
 
-        Pattern specailCharPatten = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+        ArrayList<String> errorList = new ArrayList();
+
+        Pattern specialCharPatten = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
         Pattern UpperCasePatten = Pattern.compile("[A-Z ]");
         Pattern lowerCasePatten = Pattern.compile("[a-z ]");
         Pattern digitCasePatten = Pattern.compile("[0-9 ]");
-        errorList.clear();
 
-        boolean flag=true;
-
-        if (!passwordhere.equals(confirmhere)) {
+        if (!passwordHere.equals(confirmHere)) {
             errorList.add("password and confirm password does not match");
-            flag=false;
         }
-        if (passwordhere.length() < 8) {
-            errorList.add("Password lenght must have alleast 8 character !!");
-            flag=false;
+        if (passwordHere.length() < 6) {
+            errorList.add("Password length must have at least 6 character !!");
         }
-        if (!specailCharPatten.matcher(passwordhere).find()) {
-            errorList.add("Password must have atleast one specail character !!");
-            flag=false;
+        if (!specialCharPatten.matcher(passwordHere).find()) {
+            errorList.add("Password must have at least one special character !!");
         }
-        if (!UpperCasePatten.matcher(passwordhere).find()) {
-            errorList.add("Password must have atleast one uppercase character !!");
-            flag=false;
+        if (!UpperCasePatten.matcher(passwordHere).find()) {
+            errorList.add("Password must have at least one uppercase character !!");
         }
-        if (!lowerCasePatten.matcher(passwordhere).find()) {
-            errorList.add("Password must have atleast one lowercase character !!");
-            flag=false;
+        if (!lowerCasePatten.matcher(passwordHere).find()) {
+            errorList.add("Password must have at least one lowercase character !!");
         }
-        if (!digitCasePatten.matcher(passwordhere).find()) {
-            errorList.add("Password must have atleast one digit character !!");
-            flag=false;
+        if (!digitCasePatten.matcher(passwordHere).find()) {
+            errorList.add("Password must have at least one digit character !!");
         }
 
-        return flag;
+        return errorList;
 
     }
 }

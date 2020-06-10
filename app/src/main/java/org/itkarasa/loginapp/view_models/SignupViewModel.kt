@@ -11,46 +11,47 @@ import kotlinx.coroutines.withContext
 import org.itkarasa.loginapp.database.entity.User
 import org.itkarasa.loginapp.repository.UserRepository
 import javax.inject.Inject
-import android.view.View
 import org.itkarasa.loginapp.R
+import org.itkarasa.loginapp.helpers.Validators
 
 /**
  * Created by mohsen on 10,June,2020
  */
-class LoginViewModel @Inject constructor(
+class SignupViewModel @Inject constructor(
     private val userRepository: UserRepository,
     private val context: Context
 ) : ViewModel() {
 
-
-    fun login(username: String?, password: String?) {
-
-        if(password.isNullOrEmpty() || username.isNullOrEmpty()) {
+    fun signUp(username: String?, password: String?, passwordConfirm: String?, fullName: String?) {
+        
+        if(username.isNullOrEmpty() || password.isNullOrEmpty()  || passwordConfirm.isNullOrEmpty()){
             showMessage(context.getString(R.string.enter_values))
             return
         }
+        
+        if(!Validators.isValidEmailAddress(username)) {
+            showMessage(context.getString(R.string.valid_email))
+            return
+        }
+        
+        val passwordErrors = Validators.isPasswordValid(password, passwordConfirm)
 
-            CoroutineScope(Dispatchers.IO).launch {
-            val user = userRepository.getUser(username, password)
+        if(!passwordErrors.isNullOrEmpty()){
+            showMessage(passwordErrors[0])
+            return
+        }
 
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val success = userRepository.insertUser(User(username, password, fullName))
             withContext(Dispatchers.Main) {
-                if (user == null)
-                    showMessage("You are not signed Up before. Please sign up first.")
-                else {
-                    if(user.isAdmin){
-                        //TODO
-                        //go to admin users page
-                    }
-                    else {
-                        //TODO
-                     //   go to user profile page
-                    }
-                }
-
+                if (success)
+                    showMessage(context.getString(R.string.sign_up_message_success))
+                else
+                    showMessage( context.getString(R.string.sign_up_message_failed))
             }
         }
     }
-
 
     private fun showMessage(message: String){
         Log.d(TAG, "show message: message")
