@@ -10,13 +10,11 @@ import org.itkarasa.loginapp.database.entity.User
 @Dao
 abstract class UserDao {
 
-    /**
-     * Insert an object in the database.
-     *
-     * @param user the object to be inserted.
-     */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insert(user: User)
+
+    @Update
+    abstract fun update(user: User)
 
     /**
      * Delete an object from the database
@@ -26,16 +24,24 @@ abstract class UserDao {
     @Delete
     abstract fun delete(user: User)
 
+    /**
+     * get users by filtering username field
+     *
+     * @param username the username of user
+     */
+    @Query("select * FROM user_table where username = :username")
+    abstract fun getUser(username: String): List<User>
+
+    /**
+     * get users by filtering username and password field
+     *
+     * @param username the username of user
+     * @param password the password of user
+     */
+    @Query("select * FROM user_table where username = :username AND password = :password")
+    abstract fun getUser(username: String, password: String): List<User>
+
 
     @Query("select * FROM user_table")
     abstract fun getAll(): LiveData<List<User>>
-
-    /**
-     * get networkDevice by filtering the ip column
-     * because there is not more than  device per ip, the output is a list with just one item
-     *
-     * @param username the ip of networkDevice
-     */
-    @Query("select * FROM user_table where username = :username AND password = :password")
-    abstract fun get(username: String, password: String): LiveData<List<User>>
 }

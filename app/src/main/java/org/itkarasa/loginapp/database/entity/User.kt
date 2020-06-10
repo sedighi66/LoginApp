@@ -12,11 +12,16 @@ data class User(
     @ColumnInfo(name = "username")
     var username: String,
     @ColumnInfo(name = "password")
-    var password: String
+    var password: String,
+    @ColumnInfo(name = "full_name")
+    var fullName: String? = null
 ) {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "user_id")
     var id: Int = 0
+
+    @ColumnInfo(name = "is_admin")
+    var isAdmin: Boolean = false
 
 
     override fun equals(other: Any?): Boolean {
