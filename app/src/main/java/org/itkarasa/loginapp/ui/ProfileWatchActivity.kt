@@ -7,9 +7,7 @@ import org.itkarasa.loginapp.R
 import org.itkarasa.loginapp.adapters.UserAdapter.UserViewHolder.Companion.WATCH_PROFILE_KEY
 import org.itkarasa.loginapp.database.entity.User
 import org.itkarasa.loginapp.databinding.ActivityProfileWatchBinding
-import org.itkarasa.loginapp.di.Modules.AppModule
-import org.itkarasa.loginapp.di.Modules.UserModule
-import org.itkarasa.loginapp.di.components.DaggerProfileWatchComponent
+import org.itkarasa.loginapp.di.DiHelper
 
 class ProfileWatchActivity : AppCompatActivity() {
 
@@ -22,16 +20,8 @@ class ProfileWatchActivity : AppCompatActivity() {
         rootView = binding.root
         setContentView(rootView)
 
-        title = getString(R.string.watch_profile)
-
         val user = intent.getSerializableExtra(WATCH_PROFILE_KEY) as User
-        binding.viewModel =
-            DaggerProfileWatchComponent.builder().appModule(
-                AppModule(
-                    this
-                )
-            )
-                .userModule(UserModule(user)).build().profileWatchViewModel()
+        binding.viewModel = DiHelper.getProfileWatchViewModel(this, user)
 
     }
 

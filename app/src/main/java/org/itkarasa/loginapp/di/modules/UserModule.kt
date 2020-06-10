@@ -1,10 +1,7 @@
-package org.itkarasa.loginapp.di.Modules
+package org.itkarasa.loginapp.di.modules
 
-import android.content.Context
 import dagger.Module
 import dagger.Provides
-import org.itkarasa.loginapp.database.AppDatabase
-import org.itkarasa.loginapp.database.dao.UserDao
 import org.itkarasa.loginapp.database.entity.User
 
 @Module

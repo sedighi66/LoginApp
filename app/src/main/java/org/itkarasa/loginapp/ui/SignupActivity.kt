@@ -4,8 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_signup.*
 import org.itkarasa.loginapp.R
-import org.itkarasa.loginapp.di.Modules.AppModule
-import org.itkarasa.loginapp.di.components.DaggerSignupComponent
+import org.itkarasa.loginapp.di.DiHelper
 import org.itkarasa.loginapp.view_models.SignupViewModel
 
 class SignupActivity : AppCompatActivity() {
@@ -16,15 +15,7 @@ class SignupActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
 
-        title = getString(R.string.signup_page_name)
-
-        viewModel =
-            DaggerSignupComponent.builder().appModule(
-                AppModule(
-                    this
-                )
-            )
-                .build().signUpViewModel()
+        viewModel = DiHelper.getSignupViewModel(this)
 
         signUp.setOnClickListener {
             viewModel.signUp(

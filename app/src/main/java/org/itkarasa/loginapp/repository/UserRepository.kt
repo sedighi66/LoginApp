@@ -2,10 +2,12 @@ package org.itkarasa.loginapp.repository
 
 import org.itkarasa.loginapp.database.entity.User
 import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * Created by mohsen on 10,June,2020
  */
+@Singleton
 class UserRepository @Inject constructor(private val localDataSource: LocalDataSource){
 
     fun getUsers() = localDataSource.getUsers()
