@@ -6,4 +6,5 @@
     <dimen name="margin_horizontal_half_standard">12dp</dimen>
     <dimen name="margin_vertical_standard">16dp</dimen>
     <dimen name="margin_vertical_half_standard">8dp</dimen>
+    <dimen name="margin_vertical_quarter_standard">2dp</dimen>
 </resources>

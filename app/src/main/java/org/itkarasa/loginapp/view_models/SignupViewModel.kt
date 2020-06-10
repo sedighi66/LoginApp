@@ -23,8 +23,8 @@ class SignupViewModel @Inject constructor(
 ) : ViewModel() {
 
     fun signUp(username: String?, password: String?, passwordConfirm: String?, fullName: String?) {
-        
-        if(username.isNullOrEmpty() || password.isNullOrEmpty()  || passwordConfirm.isNullOrEmpty()){
+
+        if(username.isNullOrEmpty() || password.isNullOrEmpty()){
             showMessage(context.getString(R.string.enter_values))
             return
         }

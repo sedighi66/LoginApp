@@ -1,5 +1,6 @@
 package org.itkarasa.loginapp.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
@@ -21,6 +22,11 @@ class MainActivity : AppCompatActivity() {
 
         login.setOnClickListener{
             viewModel.login(username.text.toString(), password.text.toString())
+        }
+
+        signUp.setOnClickListener {
+            val intent = Intent(this, SignupActivity::class.java)
+            startActivity(intent)
         }
     }
 
