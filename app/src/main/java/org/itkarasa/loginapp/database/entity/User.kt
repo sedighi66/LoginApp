@@ -27,7 +27,6 @@ data class User(
 
         if (username != other.username) return false
         if (password != other.password) return false
-        if (id != other.id) return false
 
         return true
     }

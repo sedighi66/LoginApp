@@ -36,6 +36,6 @@ abstract class UserDao {
      *
      * @param username the ip of networkDevice
      */
-    @Query("select * FROM user_table where username = :username")
-    abstract fun get(username: String): List<User>
+    @Query("select * FROM user_table where username = :username AND password = :password")
+    abstract fun get(username: String, password: String): LiveData<List<User>>
 }
