@@ -28,9 +28,9 @@ public class Validators {
 
         if (passwordHere.length() < 6)
             errorList.add("Password length must have at least 6 character !!");
-
-        if (!lowerCasePatten.matcher(passwordHere).find())
-            errorList.add("Password must have at least one lowercase character !!");
+//
+//        if (!lowerCasePatten.matcher(passwordHere).find())
+//            errorList.add("Password must have at least one lowercase character !!");
 
         if (!UpperCasePatten.matcher(passwordHere).find())
             errorList.add("Password must have at least one uppercase character !!");
@@ -38,9 +38,9 @@ public class Validators {
 
         if (!digitCasePatten.matcher(passwordHere).find())
             errorList.add("Password must have at least one digit character !!");
-
-        if (!specialCharPatten.matcher(passwordHere).find())
-            errorList.add("Password must have at least one special character !!");
+//
+//        if (!specialCharPatten.matcher(passwordHere).find())
+//            errorList.add("Password must have at least one special character !!");
 
         if (!passwordHere.equals(confirmHere))
             errorList.add("password and confirm password does not match");
