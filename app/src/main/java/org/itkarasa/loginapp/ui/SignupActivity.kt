@@ -20,7 +20,7 @@ class SignupActivity : AppCompatActivity() {
         title = getString(R.string.signup_page_name)
 
         viewModel =
-            DaggerSignupComponent.builder().appModule(AppModule(this.application as LoginApp))
+            DaggerSignupComponent.builder().appModule(AppModule(this))
                 .build().signUpViewModel()
 
         signUp.setOnClickListener {

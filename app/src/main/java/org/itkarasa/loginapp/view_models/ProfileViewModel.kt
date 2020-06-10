@@ -1,18 +1,17 @@
 package org.itkarasa.loginapp.view_models
 
+import android.app.Activity
+import android.app.Application
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
-import androidx.lifecycle.ViewModel
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.itkarasa.loginapp.repository.UserRepository
 import javax.inject.Inject
-import android.view.View
-import androidx.lifecycle.viewModelScope
-import org.itkarasa.loginapp.R
 import org.itkarasa.loginapp.database.entity.User
 
 /**
@@ -32,7 +31,7 @@ class ProfileViewModel @Inject constructor(
                 if(isDeleted) {
                     showMessage("Deleted.")
                     //TODO
-                    //go to main page
+                    (context as AppCompatActivity).onBackPressed()
                 }
                 else
                     showMessage("Not Deleted.")

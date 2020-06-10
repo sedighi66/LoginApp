@@ -26,7 +26,7 @@ class ProfileActivity : AppCompatActivity() {
 
         val user = intent.getSerializableExtra(LoginViewModel.USER) as User
         binding.viewModel =
-            DaggerProfileComponent.builder().appModule(AppModule(this.application as LoginApp))
+            DaggerProfileComponent.builder().appModule(AppModule(this))
                 .profileModule(ProfileModule(user)).build().profileViewModel()
 
         rootView.findViewById<Button>(R.id.update).setOnClickListener {

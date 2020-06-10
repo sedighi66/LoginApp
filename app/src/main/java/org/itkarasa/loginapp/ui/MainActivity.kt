@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        viewModel = DaggerLoginComponent.builder().appModule(AppModule(this.application as LoginApp)).build().loginViewModel()
+        viewModel = DaggerLoginComponent.builder().appModule(AppModule(this)).build().loginViewModel()
 
         login.setOnClickListener{
             viewModel.login(username.text.toString(), password.text.toString())
