@@ -15,5 +15,7 @@ class UserRepository @Inject constructor(private val localDataSource: LocalDataS
     suspend fun insertUser(user: User): Boolean = localDataSource.insertUser(user)
 
     suspend fun updateUser(oldUser: User, user: User): Boolean = localDataSource.updateUser(oldUser, user)
+    suspend fun updateUser(user: User): Boolean = localDataSource.updateUser(user)
+    suspend fun deleteUser(user: User): Boolean = localDataSource.deleteUser(user)
 
 }

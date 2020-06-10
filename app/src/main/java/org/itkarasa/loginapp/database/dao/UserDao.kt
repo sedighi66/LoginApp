@@ -14,7 +14,7 @@ abstract class UserDao {
     abstract fun insert(user: User)
 
     @Update
-    abstract fun update(user: User)
+    abstract fun update(user: User): Int
 
     /**
      * Delete an object from the database
@@ -22,7 +22,7 @@ abstract class UserDao {
      * @param user the object to be deleted
      */
     @Delete
-    abstract fun delete(user: User)
+    abstract fun delete(user: User): Int
 
     /**
      * get users by filtering username field

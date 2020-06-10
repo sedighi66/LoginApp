@@ -3,6 +3,7 @@ package org.itkarasa.loginapp.database.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 /**
  * Created by mohsen on 03,May,2020
@@ -15,7 +16,7 @@ data class User(
     var password: String,
     @ColumnInfo(name = "full_name")
     var fullName: String? = null
-) {
+) : Serializable{
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "user_id")
     var id: Int = 0

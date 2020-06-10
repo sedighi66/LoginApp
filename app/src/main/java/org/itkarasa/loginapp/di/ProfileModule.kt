@@ -5,12 +5,13 @@ import dagger.Module
 import dagger.Provides
 import org.itkarasa.loginapp.database.AppDatabase
 import org.itkarasa.loginapp.database.dao.UserDao
+import org.itkarasa.loginapp.database.entity.User
 
 @Module
-class LoginModules {
+class ProfileModule(private val user: User) {
 
     @Provides
-    fun provideUserDao(context: Context): UserDao {
-        return AppDatabase.getInstance(context)!!.userDao()
+    fun provideUser(): User{
+        return user
     }
 }

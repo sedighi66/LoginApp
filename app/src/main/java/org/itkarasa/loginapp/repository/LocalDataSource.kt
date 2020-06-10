@@ -37,4 +37,16 @@ class LocalDataSource @Inject constructor(private val userDao: UserDao) {
 
         return true
     }
+
+    suspend fun updateUser(user: User): Boolean{
+        val updatedRows = userDao.update(user)
+
+        return updatedRows > 0
+    }
+
+    fun deleteUser(user: User): Boolean {
+        val updatedRows = userDao.delete(user)
+
+        return updatedRows > 0
+    }
 }

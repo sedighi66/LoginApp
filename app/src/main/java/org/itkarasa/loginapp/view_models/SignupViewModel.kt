@@ -20,45 +20,6 @@ import org.itkarasa.loginapp.helpers.Validators
 class SignupViewModel @Inject constructor(
     private val userRepository: UserRepository,
     private val context: Context
-) : ViewModel() {
+) : UserViewModel(userRepository, context) {
 
-    fun signUp(username: String?, password: String?, passwordConfirm: String?, fullName: String?) {
-
-        if(username.isNullOrEmpty() || password.isNullOrEmpty()){
-            showMessage(context.getString(R.string.enter_values))
-            return
-        }
-        
-        if(!Validators.isValidEmailAddress(username)) {
-            showMessage(context.getString(R.string.valid_email))
-            return
-        }
-        
-        val passwordErrors = Validators.isPasswordValid(password, passwordConfirm)
-
-        if(!passwordErrors.isNullOrEmpty()){
-            showMessage(passwordErrors[0])
-            return
-        }
-
-
-        CoroutineScope(Dispatchers.IO).launch {
-            val success = userRepository.insertUser(User(username, password, fullName))
-            withContext(Dispatchers.Main) {
-                if (success)
-                    showMessage(context.getString(R.string.sign_up_message_success))
-                else
-                    showMessage( context.getString(R.string.sign_up_message_failed))
-            }
-        }
-    }
-
-    private fun showMessage(message: String){
-        Log.d(TAG, "show message: message")
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
-    }
-
-    companion object{
-        private const val TAG = "LoginViewModel"
-    }
 }
