@@ -28,4 +28,6 @@
     <string name="signup_page_name">Signup</string>
     <string name="update">Update</string>
     <string name="delete">Delete</string>
+    <string name="profile">Profile</string>
+    <string name="admin">Admin</string>
 </resources>

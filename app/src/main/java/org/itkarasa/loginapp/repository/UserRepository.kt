@@ -8,7 +8,7 @@ import javax.inject.Inject
  */
 class UserRepository @Inject constructor(private val localDataSource: LocalDataSource){
 
-    suspend fun getUsers() = localDataSource.getUsers()
+    fun getUsers() = localDataSource.getUsers()
 
     suspend fun getUser(username: String, password: String): User? = localDataSource.getUser(username, password)
 

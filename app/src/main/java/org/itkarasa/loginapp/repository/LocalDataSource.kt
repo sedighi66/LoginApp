@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class LocalDataSource @Inject constructor(private val userDao: UserDao) {
 
-    suspend fun getUsers(): LiveData<List<User>> = userDao.getAll()
+    fun getUsers(): LiveData<List<User>> = userDao.getAll()
 
     suspend fun getUser(username: String, password: String): User?{
 

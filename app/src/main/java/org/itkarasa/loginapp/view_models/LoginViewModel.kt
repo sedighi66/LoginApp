@@ -14,6 +14,7 @@ import javax.inject.Inject
 import android.view.View
 import androidx.core.content.ContextCompat.startActivity
 import org.itkarasa.loginapp.R
+import org.itkarasa.loginapp.ui.AdminActivity
 import org.itkarasa.loginapp.ui.ProfileActivity
 import org.itkarasa.loginapp.ui.SignupActivity
 
@@ -23,7 +24,7 @@ import org.itkarasa.loginapp.ui.SignupActivity
 class LoginViewModel @Inject constructor(
     private val userRepository: UserRepository,
     private val context: Context
-) : ViewModel() {
+) : BaseViewModel(context) {
 
 
     fun signUp() {
@@ -47,8 +48,9 @@ class LoginViewModel @Inject constructor(
                     showMessage("You are not signed Up before. Please sign up first.")
                 else {
                     if(user.isAdmin){
-                        //TODO
-                        //go to admin users page
+                        val intent = Intent(context, AdminActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                        startActivity(context, intent, null)
                     }
                     else {
                         val intent = Intent(context, ProfileActivity::class.java)
@@ -60,12 +62,6 @@ class LoginViewModel @Inject constructor(
 
             }
         }
-    }
-
-
-    private fun showMessage(message: String){
-        Log.d(TAG, "show message: message")
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
     }
 
     companion object{

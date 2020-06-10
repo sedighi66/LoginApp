@@ -8,7 +8,7 @@ import org.itkarasa.loginapp.database.dao.UserDao
 import org.itkarasa.loginapp.database.entity.User
 
 @Module
-class ProfileModule(private val user: User) {
+class UserModule(private val user: User) {
 
     @Provides
     fun provideUser(): User{

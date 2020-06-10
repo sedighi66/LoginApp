@@ -4,13 +4,12 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import org.itkarasa.loginapp.LoginApp
 import org.itkarasa.loginapp.R
 import org.itkarasa.loginapp.database.entity.User
 import org.itkarasa.loginapp.databinding.ActivityProfileBinding
 import org.itkarasa.loginapp.di.AppModule
 import org.itkarasa.loginapp.di.DaggerProfileComponent
-import org.itkarasa.loginapp.di.ProfileModule
+import org.itkarasa.loginapp.di.UserModule
 import org.itkarasa.loginapp.view_models.LoginViewModel
 
 class ProfileActivity : AppCompatActivity() {
@@ -24,10 +23,12 @@ class ProfileActivity : AppCompatActivity() {
         rootView = binding.root
         setContentView(rootView)
 
+        title = getString(R.string.profile)
+
         val user = intent.getSerializableExtra(LoginViewModel.USER) as User
         binding.viewModel =
             DaggerProfileComponent.builder().appModule(AppModule(this))
-                .profileModule(ProfileModule(user)).build().profileViewModel()
+                .userModule(UserModule(user)).build().profileViewModel()
 
         rootView.findViewById<Button>(R.id.update).setOnClickListener {
             binding.viewModel!!.update()

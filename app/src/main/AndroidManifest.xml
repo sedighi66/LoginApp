@@ -20,6 +20,7 @@
 
         <activity android:name=".ui.SignupActivity"/>
         <activity android:name=".ui.ProfileActivity"/>
+        <activity android:name=".ui.AdminActivity"/>
     </application>
 
 </manifest>

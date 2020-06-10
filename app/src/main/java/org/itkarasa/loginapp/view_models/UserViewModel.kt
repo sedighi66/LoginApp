@@ -17,7 +17,7 @@ import org.itkarasa.loginapp.repository.UserRepository
  * Created by mohsen on 10,June,2020
  */
 abstract class UserViewModel(private val userRepository: UserRepository,
-                    private val context: Context): ViewModel() {
+                    private val context: Context): BaseViewModel(context) {
 
     fun signUp(username: String?, password: String?, passwordConfirm: String?, fullName: String?) {
 
@@ -70,10 +70,6 @@ abstract class UserViewModel(private val userRepository: UserRepository,
         return true
     }
 
-    private fun showMessage(message: String){
-        Log.d(TAG, "show message: message")
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
-    }
 
     companion object{
         private const val TAG = "UserViewModel"
