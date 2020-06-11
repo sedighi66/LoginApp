@@ -38,25 +38,31 @@ class LoginViewModel @Inject constructor(
         }
 
             CoroutineScope(Dispatchers.IO).launch {
-            val user = userRepository.getUser(username, password)
+            var user = userRepository.getUser(username)
 
             withContext(Dispatchers.Main) {
-                if (user == null)
+                if (user == null) {
                     showMessage("You are not signed Up before. Please sign up first.")
+                    return@withContext
+                }
                 else {
-                    if(user.isAdmin){
+                    user = userRepository.getUser(username, password)
+                    if (user == null) {
+                        showMessage("Your password is not correct.")
+                        return@withContext
+                    }
+                    if (user!!.isAdmin) {
                         val intent = Intent(context, AdminActivity::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                         startActivity(context, intent, null)
-                    }
-                    else {
+                    } else {
                         val intent = Intent(context, ProfileActivity::class.java)
                         intent.putExtra(USER_KEY, user)
                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                         startActivity(context, intent, null)
                     }
-                }
 
+                }
             }
         }
     }

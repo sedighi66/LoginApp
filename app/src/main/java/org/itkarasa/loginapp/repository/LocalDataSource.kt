@@ -17,9 +17,17 @@ class LocalDataSource @Inject constructor(private val userDao: UserDao) {
         else null
     }
 
+    suspend fun getUser(username: String): User?{
+
+        val users = userDao.getUser(username)
+        return if(users.size == 1)
+            users[0]
+        else null
+    }
+
     suspend fun insertUser(user: User): Boolean{
 
-        val exist = userDao.getUser(user.username, user.password).isNotEmpty()
+        val exist = userDao.getUser(user.username).isNotEmpty()
         return if(exist)
             false
         else{
