@@ -20,10 +20,4 @@ class MainActivity : AppCompatActivity() {
         binding.viewModel = DiHelper.getLoginViewModel(this)
     }
 
-
-
-    companion object{
-        private const val TAG = "MainActivity"
-    }
-
 }

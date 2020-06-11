@@ -12,6 +12,7 @@ import org.itkarasa.loginapp.view_models.*
 /**
  * Created by mohsen on 11,June,2020
  */
+// provide this helper class to get viewModels easier
 object DiHelper {
 
     fun getAdminViewModel(activity: AppCompatActivity): AdminViewModel =
@@ -36,6 +37,7 @@ object DiHelper {
         DaggerProfileWatchComponent.builder().activityModule(
         ActivityModule(activity))
         .userModule(UserModule(user))
+            //dagger tells that this is deprecated. Maybe this is a bug in dagger!
         .userRepositoryModule(UserRepositoryModule(activity.application as LoginApp))
         .build().profileWatchViewModel()
 

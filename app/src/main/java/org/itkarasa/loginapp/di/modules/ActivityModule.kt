@@ -12,6 +12,7 @@ import org.itkarasa.loginapp.database.dao.UserDao
 /**
  * Created by mohsen on 09,June,2020
  */
+// According to what we need in app, we provide these items by using app or activity as the constructor argument of the module
 @Module
 class ActivityModule(private val activity: AppCompatActivity) {
 

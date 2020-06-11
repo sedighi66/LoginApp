@@ -13,5 +13,6 @@ import javax.inject.Singleton
 @Component(modules = [AppModule::class])
 interface AppComponent {
 
+    //UserRepository should be singleton, because in whole of the application it is usable
     fun userRepository(): UserRepository
 }

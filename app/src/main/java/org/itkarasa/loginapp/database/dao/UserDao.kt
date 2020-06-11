@@ -10,9 +10,19 @@ import org.itkarasa.loginapp.database.entity.User
 @Dao
 abstract class UserDao {
 
+    /**
+     * Insert an object on the database
+     *
+     * @param user the object to be inserted
+     */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insert(user: User)
 
+    /**
+     * update an object on the database
+     *
+     * @param user the object to be updated
+     */
     @Update
     abstract fun update(user: User): Int
 
@@ -42,6 +52,10 @@ abstract class UserDao {
     abstract fun getUser(username: String, password: String): List<User>
 
 
+    /**
+     * get all users
+     *
+     */
     @Query("select * FROM user_table")
     abstract fun getAll(): LiveData<List<User>>
 }

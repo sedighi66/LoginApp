@@ -30,6 +30,16 @@ class LoginViewModel @Inject constructor(
         startActivity(context, intent, null)
     }
 
+
+    /**
+     * This function check if the username is in database,
+     * then check if password is wrong,
+     * and then guide user to relevant page.
+     *
+     * @param username
+     * @param password
+     *
+     */
     fun login(username: String?, password: String?) {
 
         if (password.isNullOrEmpty() || username.isNullOrEmpty()) {
@@ -38,16 +48,18 @@ class LoginViewModel @Inject constructor(
         }
 
         CoroutineScope(Dispatchers.IO).launch {
+            //check for a username in database
             var user = userRepository.getUser(username)
 
-
             if (user == null) {
+                //with main dispatcher, it shows a toast to user.
                 withContext(Dispatchers.Main) {
                     showMessage("You are not signed Up before. Please sign up first.")
                 }
                 return@launch
             } else {
-
+                //now checking if username is correct, but password is not
+                //and show a message to user
                 user = userRepository.getUser(username, password)
                 if (user == null) {
                     withContext(Dispatchers.Main) {
@@ -72,7 +84,6 @@ class LoginViewModel @Inject constructor(
     }
 
     companion object {
-        private const val TAG = "LoginViewModel"
         const val USER_KEY = "user"
     }
 }

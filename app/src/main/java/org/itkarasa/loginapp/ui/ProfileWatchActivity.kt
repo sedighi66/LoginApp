@@ -24,10 +24,4 @@ class ProfileWatchActivity : AppCompatActivity() {
         binding.viewModel = DiHelper.getProfileWatchViewModel(this, user)
 
     }
-
-
-    companion object {
-        private const val TAG = "ProfileActivity"
-    }
-
 }

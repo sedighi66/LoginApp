@@ -69,9 +69,4 @@ abstract class UserViewModel(private val userRepository: UserRepository,
         }
         return true
     }
-
-
-    companion object{
-        private const val TAG = "UserViewModel"
-    }
 }

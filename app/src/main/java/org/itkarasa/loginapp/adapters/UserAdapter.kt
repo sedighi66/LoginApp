@@ -65,7 +65,6 @@ class UserAdapter(
 
 
         companion object {
-            private const val TAG = "Adapter"
             const val WATCH_PROFILE_KEY = "watch_profile_key"
         }
     }

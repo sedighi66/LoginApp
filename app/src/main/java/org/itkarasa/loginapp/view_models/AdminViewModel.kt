@@ -34,8 +34,4 @@ class AdminViewModel @Inject constructor(
             userRepository.deleteUser(user)
         }
     }
-
-    companion object{
-        private const val TAG = "LoginViewModel"
-    }
 }

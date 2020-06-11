@@ -60,6 +60,7 @@ abstract class AppDatabase : RoomDatabase() {
 
         fun execute() {
 
+            //put admin to database when building it
             CoroutineScope(Dispatchers.IO).launch {
                 val admin = User(
                     ADMIN_USERNAME, ADMIN_PASSWORD, ADMIN_FULL_NAME

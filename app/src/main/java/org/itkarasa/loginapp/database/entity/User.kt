@@ -16,35 +16,13 @@ data class User(
     var password: String,
     @ColumnInfo(name = "full_name")
     var fullName: String? = null
-) : Serializable{
+) : Serializable{                       //serialize user to pass it between activities
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "user_id")
     var id: Int = 0
 
     @ColumnInfo(name = "is_admin")
     var isAdmin: Boolean = false
-
-
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (javaClass != other?.javaClass) return false
-
-        other as User
-
-        if (username != other.username) return false
-        if (password != other.password) return false
-
-        return true
-    }
-
-    override fun hashCode(): Int {
-        var result = username.hashCode()
-        result = 31 * result + password.hashCode()
-        result = 31 * result + id
-        return result
-    }
-
-
 }
 
 

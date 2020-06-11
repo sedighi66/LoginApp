@@ -16,6 +16,7 @@ public class Validators {
         return m.matches();
     }
 
+    // app shows first error in the list as it is managed somehow to help user to write a valid password
     public static List<String> isPasswordValid(String passwordHere, String confirmHere) {
 
         ArrayList<String> errorList = new ArrayList();

@@ -15,7 +15,7 @@
     <string name="password_textview">Password:</string>
     <string name="action_sign_up">Singup</string>
     <string name="sign_up_message_success">You have successfully signed Up. For login, click back to Login page.</string>
-    <string name="sign_up_message_failed">Sign up is Failed.</string>
+    <string name="sign_up_message_failed">Signup is Failed. Maybe the email is repetitive.</string>
     <string name="enter_email">Please enter username.</string>
     <string name="enter_password">Please enter password.</string>
     <string name="enter_values">Please enter username and password.</string>

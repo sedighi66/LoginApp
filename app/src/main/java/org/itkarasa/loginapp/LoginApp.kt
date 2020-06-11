@@ -14,6 +14,8 @@ class LoginApp: Application() {
 
     override fun onCreate() {
         super.onCreate()
+        // userRepository is in whole of the app,
+        // so it should be a singleton
         userRepository = DaggerAppComponent.builder().appModule(AppModule(this)).build().userRepository()
     }
 }
