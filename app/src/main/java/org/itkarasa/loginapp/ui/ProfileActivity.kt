@@ -23,20 +23,5 @@ class ProfileActivity : AppCompatActivity() {
 
         val user = intent.getSerializableExtra(LoginViewModel.USER_KEY) as User
         binding.viewModel = DiHelper.getProfileViewModel(this, user)
-
-        rootView.findViewById<Button>(R.id.update).setOnClickListener {
-            binding.viewModel!!.update()
-        }
-
-        rootView.findViewById<Button>(R.id.delete).setOnClickListener {
-            binding.viewModel!!.delete()
-
-        }
     }
-
-
-    companion object {
-        private const val TAG = "ProfileActivity"
-    }
-
 }

@@ -1,10 +1,6 @@
 package org.itkarasa.loginapp.view_models
 
-import android.app.Activity
-import android.app.Application
 import android.content.Context
-import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -53,9 +49,5 @@ class ProfileViewModel @Inject constructor(
                     showMessage("Not Updated.")
             }
         }
-    }
-
-    companion object{
-        private const val TAG = "LoginViewModel"
     }
 }
