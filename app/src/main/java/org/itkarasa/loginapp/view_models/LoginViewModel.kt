@@ -13,6 +13,7 @@ import org.itkarasa.loginapp.R
 import org.itkarasa.loginapp.ui.AdminActivity
 import org.itkarasa.loginapp.ui.ProfileActivity
 import org.itkarasa.loginapp.ui.SignupActivity
+import android.view.View
 
 /**
  * Created by mohsen on 10,June,2020
@@ -23,7 +24,7 @@ class LoginViewModel @Inject constructor(
 ) : BaseViewModel(context) {
 
 
-    fun signUp() {
+    fun signUp(view: View) {
         val intent = Intent(context, SignupActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(context, intent, null)

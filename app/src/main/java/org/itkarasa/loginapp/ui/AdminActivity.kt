@@ -5,32 +5,30 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_admin.*
-import org.itkarasa.loginapp.R
 import org.itkarasa.loginapp.adapters.UserAdapter
+import org.itkarasa.loginapp.database.entity.User
+import org.itkarasa.loginapp.databinding.ActivityAdminBinding
 import org.itkarasa.loginapp.di.DiHelper
-import org.itkarasa.loginapp.view_models.AdminViewModel
 
 class AdminActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: AdminViewModel
+    private lateinit var binding: ActivityAdminBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_admin)
+        binding = ActivityAdminBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        viewModel = DiHelper.getAdminViewModel(this)
+        binding.viewModel = DiHelper.getAdminViewModel(this)
 
         userList.layoutManager = LinearLayoutManager(applicationContext)
 
-        viewModel.getUsers().observe(this, Observer {
-            userList.adapter = UserAdapter(it, applicationContext, viewModel)
+        binding.viewModel!!.getUsers().observe(this, Observer {
+           updateUi(it)
         })
     }
 
-
-
-    companion object{
-        private const val TAG = "MainActivity"
+    private fun updateUi(users: List<User>){
+        userList.adapter = UserAdapter(users, applicationContext, binding.viewModel!!)
     }
-
 }

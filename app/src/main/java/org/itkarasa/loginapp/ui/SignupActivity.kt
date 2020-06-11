@@ -4,32 +4,19 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_signup.*
 import org.itkarasa.loginapp.R
+import org.itkarasa.loginapp.databinding.ActivitySignupBinding
 import org.itkarasa.loginapp.di.DiHelper
 import org.itkarasa.loginapp.view_models.SignupViewModel
 
 class SignupActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: SignupViewModel
+    private lateinit var binding: ActivitySignupBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_signup)
+        binding = ActivitySignupBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        viewModel = DiHelper.getSignupViewModel(this)
-
-        signUp.setOnClickListener {
-            viewModel.signUp(
-                username.text.toString(),
-                password.text.toString(),
-                confirmPassword.text.toString(),
-                fullName.text.toString()
-            )
-        }
+        binding.viewModel = DiHelper.getSignupViewModel(this)
     }
-
-
-    companion object {
-        private const val TAG = "SignupActivity"
-    }
-
 }
