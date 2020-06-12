@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_admin.*
 import org.itkarasa.loginapp.adapters.UserAdapter
+import org.itkarasa.loginapp.createViewModel
 import org.itkarasa.loginapp.database.entity.User
 import org.itkarasa.loginapp.databinding.ActivityAdminBinding
 import org.itkarasa.loginapp.di.DiHelper
@@ -19,7 +20,7 @@ class AdminActivity : AppCompatActivity() {
         binding = ActivityAdminBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.viewModel = DiHelper.getAdminViewModel(this)
+        binding.viewModel = createViewModel { DiHelper.getAdminViewModel(this) }
 
         userList.layoutManager = LinearLayoutManager(applicationContext)
 

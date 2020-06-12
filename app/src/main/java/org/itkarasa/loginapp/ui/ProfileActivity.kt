@@ -2,9 +2,8 @@ package org.itkarasa.loginapp.ui
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import org.itkarasa.loginapp.R
+import org.itkarasa.loginapp.createViewModel
 import org.itkarasa.loginapp.database.entity.User
 import org.itkarasa.loginapp.databinding.ActivityProfileBinding
 import org.itkarasa.loginapp.di.DiHelper
@@ -22,6 +21,6 @@ class ProfileActivity : AppCompatActivity() {
         setContentView(rootView)
 
         val user = intent.getSerializableExtra(LoginViewModel.USER_KEY) as User
-        binding.viewModel = DiHelper.getProfileViewModel(this, user)
+        binding.viewModel = createViewModel { DiHelper.getProfileViewModel(this, user) }
     }
 }

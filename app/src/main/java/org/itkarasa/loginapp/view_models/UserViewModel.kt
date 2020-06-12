@@ -1,9 +1,6 @@
 package org.itkarasa.loginapp.view_models
 
 import android.content.Context
-import android.util.Log
-import android.widget.Toast
-import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.view.View
 import androidx.core.content.ContextCompat.startActivity
+import androidx.databinding.ObservableField
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,6 +24,8 @@ class LoginViewModel @Inject constructor(
     private val context: Context
 ) : BaseViewModel(context) {
 
+    val username = ObservableField<String>()
+    val password = ObservableField<String>()
 
     fun signUp(view: View) {
         val intent = Intent(context, SignupActivity::class.java)

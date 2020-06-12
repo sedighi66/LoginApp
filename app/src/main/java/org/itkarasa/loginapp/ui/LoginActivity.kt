@@ -2,22 +2,20 @@ package org.itkarasa.loginapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_main.*
-import org.itkarasa.loginapp.R
-import org.itkarasa.loginapp.databinding.ActivityMainBinding
+import org.itkarasa.loginapp.createViewModel
+import org.itkarasa.loginapp.databinding.ActivityLoginBinding
 import org.itkarasa.loginapp.di.DiHelper
-import org.itkarasa.loginapp.view_models.LoginViewModel
 
-class MainActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.viewModel = DiHelper.getLoginViewModel(this)
+        binding.viewModel = createViewModel { DiHelper.getLoginViewModel(this) }
     }
 
 }

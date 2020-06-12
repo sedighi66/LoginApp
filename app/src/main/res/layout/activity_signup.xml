@@ -9,26 +9,9 @@
             name="viewModel"
             type="org.itkarasa.loginapp.view_models.SignupViewModel" />
 
-        <variable
-            name="theUsername"
-            type="String" />
-
-        <variable
-            name="theFullName"
-            type="String" />
-
-        <variable
-            name="thePassword"
-            type="String" />
-
-        <variable
-            name="theConfirmPassword"
-            type="String" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -56,7 +39,7 @@
             android:layout_marginTop="@dimen/margin_vertical_quarter_standard"
             android:layout_marginEnd="@dimen/margin_horizontal_standard"
             android:hint="@string/prompt_full_name"
-            android:text="@={theFullName}"
+            android:text="@={viewModel.fullName}"
             android:inputType="text"
             android:selectAllOnFocus="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -83,7 +66,7 @@
             android:layout_marginEnd="@dimen/margin_horizontal_standard"
             android:hint="@string/prompt_email"
             android:inputType="textEmailAddress"
-            android:text="@={theUsername}"
+            android:text="@={viewModel.username}"
             android:selectAllOnFocus="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -112,7 +95,7 @@
             android:imeActionLabel="@string/action_sign_in_short"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
-            android:text="@={thePassword}"
+            android:text="@={viewModel.password}"
             android:selectAllOnFocus="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -141,7 +124,7 @@
             android:imeActionLabel="@string/action_sign_in_short"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
-            android:text="@={theConfirmPassword}"
+            android:text="@={viewModel.confirmPassword}"
             android:selectAllOnFocus="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -156,7 +139,7 @@
             android:layout_marginEnd="@dimen/margin_horizontal_standard"
             android:enabled="true"
             android:text="@string/signup"
-            android:onClick="@{() -> viewModel.signUp(theUsername, thePassword, theConfirmPassword, theFullName)}"
+            android:onClick="@{() -> viewModel.signUp()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/confirmPassword" />
 
