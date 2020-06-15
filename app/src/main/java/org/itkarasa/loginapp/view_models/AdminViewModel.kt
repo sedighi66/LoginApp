@@ -15,7 +15,7 @@ import org.itkarasa.loginapp.database.entity.User
 class AdminViewModel @Inject constructor(
     private val userRepository: UserRepository,
     private val context: Context
-) : UserViewModel(userRepository, context) {
+) : UserViewModel(context) {
 
     fun getUsers(): LiveData<List<User>> = userRepository.getUsers()
 

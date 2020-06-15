@@ -17,7 +17,7 @@ class ProfileViewModel @Inject constructor(
     private val userRepository: UserRepository,
     private val context: Context,
     var user: User
-) : UserViewModel(userRepository, context) {
+) : UserViewModel(context) {
 
     fun delete() {
 

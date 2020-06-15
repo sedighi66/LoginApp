@@ -1,35 +1,14 @@
 package org.itkarasa.loginapp.view_models
 
 import android.content.Context
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import org.itkarasa.loginapp.R
-import org.itkarasa.loginapp.database.entity.User
 import org.itkarasa.loginapp.helpers.Validators
 import org.itkarasa.loginapp.repository.UserRepository
 
 /**
  * Created by mohsen on 10,June,2020
  */
-abstract class UserViewModel(private val userRepository: UserRepository,
-                    private val context: Context): BaseViewModel(context) {
-
-    fun signUp(username: String?, password: String?, passwordConfirm: String?, fullName: String?) {
-
-        if(!validate(username, password, passwordConfirm)) return
-
-        CoroutineScope(Dispatchers.IO).launch {
-            val success = userRepository.insertUser(User(username!!, password!!, fullName))
-            withContext(Dispatchers.Main) {
-                if (success)
-                    showMessage(context.getString(R.string.sign_up_message_success))
-                else
-                    showMessage( context.getString(R.string.sign_up_message_failed))
-            }
-        }
-    }
+abstract class UserViewModel(private val context: Context): BaseViewModel(context) {
 
     fun validate(username: String?): Boolean{
 
